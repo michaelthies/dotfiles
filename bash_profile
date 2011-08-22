@@ -142,7 +142,6 @@ alias atf='export AUTOFEATURE=true;clear;autotest'
 
 #rspec
 alias sp='clear; bundle exec spec --color --format nested'
-alias sps='clear; bundle exec spec spec/ --color --format nested'
 alias as='clear; export AUTOFEATURE=false; autospec'
 alias asf='clear; export AUTOFEATURE=true; autospec'
 
