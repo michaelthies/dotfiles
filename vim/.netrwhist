@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/mthies/workspace/affiliate/extrovert/shared/plugins'
+let g:netrw_dirhist_2='/Users/mthies/workspace/affiliate/extrovert/shared'
+let g:netrw_dirhist_3='/Users/mthies/workspace/affiliate'
+let g:netrw_dirhist_4='/Users/mthies/workspace/affiliate/metromix'
+let g:netrw_dirhist_5='/Users/mthies/workspace/affiliate/extrovert'

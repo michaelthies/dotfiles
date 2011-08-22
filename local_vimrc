@@ -1,0 +1,39 @@
+colorscheme railscasts
+
+"Highlight matches as you type
+set incsearch
+
+"Toggle NERDTree window
+noremap <leader>d :NERDTreeToggle<CR>
+
+"Rescan tree for FuzzyFinder
+noremap <leader>r :ruby finder.rescan!<CR>
+
+"Git
+noremap <leader>gb :GitBlame<CR>
+
+"CoffeeScript
+noremap <leader>c :CoffeeCompile<CR>
+
+"Ruby passenger debug
+iab <silent> ddebug require 'ruby-debug'<CR>Debugger.wait_connection = true<CR>Debugger.start_remote<CR>debugger
+
+"Change to Bookmark root dir
+noremap <leader>b :BookmarkToRoot 
+
+"set foldopen=all                    "Auto-opens folds on all possible autocmds
+"set foldclose=all                   "Auto-closes folds on all possible autocmds
+
+set showtabline=2                    "Always show tab line
+set nolist                           "Don't show whitespace characters
+set scrolloff=8                      "Put 10-lines of padding when scrolling up/down off screen to give context
+
+"part of pathogen install instructions
+filetype off
+call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
+
+" moving around tabs
+map <C-l> :tabn<CR>
+map <C-h> :tabp<CR>
+map <C-n> :tabnew<CR>
