@@ -9,21 +9,32 @@ export EDITOR=vim
 # ec2 stuff
 if [[ -d $HOME/.ec2 ]]
 then
-  export EC2_HOME=~/.ec2
-
   export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
+  export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
+  export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.4.4.1/jars"
+
   export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
   export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
-  export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
-  export EC2_APITOOL_HOME="/usr/local/Cellar/ec2-api-tools/1.4.2.2/jars"
   export EC2FILE=~/.ec2/ec2-keypair
-  export AWS_ACCESS_KEY_ID=$(<$EC2_HOME/.aws_access_key_id)
-  export AWS_SECRET_ACCESS_KEY=$(<$EC2_HOME/.aws_secret_access_key)
-  export AWS_SSH_KEY_ID=$(<$EC2_HOME/.aws_ssh_key_id)
+  export AWS_ACCESS_KEY_ID=$(<$HOME/.ec2/.aws_access_key_id)
+  export AWS_SECRET_ACCESS_KEY=$(<$HOME/.ec2/.aws_secret_access_key)
+  export AWS_SSH_KEY_ID=$(<$HOME/.ec2/.aws_ssh_key_id)
 
   # chef
-  export OPSCODE_USER=$(<$EC2_HOME/.opscode_user)
-  export ORGNAME=$(<$EC2_HOME/.opscode_orgname)
+  export OPSCODE_USER=$(<$HOME/.ec2/.opscode_user)
+  export ORGNAME=$(<$HOME/.ec2/.opscode_orgname)
+
+  if [[ -d $HOME/.ec2/mmx ]]
+  then
+    function mmxaws() {
+      export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/mmx/pk-*.pem)"
+      export EC2_CERT="$(/bin/ls $HOME/.ec2/mmx/cert-*.pem)"
+      export AWS_ACCESS_KEY_ID=$(<$HOME/.ec2/mmx/.aws_access_key_id)
+      export AWS_SECRET_ACCESS_KEY=$(<$HOME/.ec2/mmx/.aws_secret_access_key)
+      export AWS_SSH_KEY_ID=$(<$HOME/.ec2/mmx/.aws_ssh_key_id)
+      unset AWS_SSH_KEY_ID
+    }
+  fi
 
   export PATH=$PATH:$EC2_HOME/bin
 fi
@@ -167,6 +178,7 @@ export NODE_PATH='/usr/local/lib/node:/usr/local/lib/node_modules'
 alias r186='rvm use 1.8.6'
 alias r187='rvm use 1.8.7'
 alias r192='rvm use 1.9.2'
+alias r193='rvm use 1.9.3'
 alias r186m='rvm use 1.8.6@metromix'
 alias r187m='rvm use 1.8.7@metromix'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
